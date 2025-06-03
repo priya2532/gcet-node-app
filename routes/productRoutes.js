@@ -1,4 +1,4 @@
-mport express from 'express'
+import express from 'express'
 import productModel from "../models/userModel.js";
 
 const productRouter = express.Router()
