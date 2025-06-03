@@ -8,23 +8,46 @@ app.listen(8080,()=>{
 });
 const userSchema=mongoose.Schema({
     name:{type:String},
+    email:{type:String},
+    pass:{type:String},
 });
-const user=mongoose.model("User",userSchema);
+const productSchema=mongoose.Schema({
+    name:{type:String},
+    price:{type:Number}
+});
+// const user=mongoose.model("User",userSchema);
+const product=mongoose.model("product",productSchema);
 app.use(cors());
+app.use(express.json());
 app.get("/",(req,res)=>{
     return res.send("Good Morning");
 });
-app.get("/register",async(req,res)=>{
-    const result=await user.insertOne({name:"John"});
+app.post("/register",async(req,res)=>{
+    const {name,email,pass}=req.body
+    const result=await user.insertOne({name:name,email:email,pass:pass});
     return res.json(result);
 });
+app.post("/login",async(req,res)=>{
+    const {name,email,pass}=req.body
+    const result=await user.insertOne({email:email,pass:pass});
+    if(result) return res.json({message:"Accepted"})
+        else{
+    
+    return res.json("Invalid");
+        }
+});
+app.get("/products",async(req,res)=>{
+    const products=await product.find();
+    res.json(products);
+})
+
 app.get("/greet",(req,res)=>{res.send("Greetings")})
 app.get("/name",(req,res)=>{res.send("Sri Priya")})
 app.get("/weather",(req,res)=>{res.send("45 degrees")})
-const product=()=>{
-    return[
-        { id: 1, name: "Laptop", price: 50000 },
-    { id: 2, name: "Mobile", price: 20000 }
-    ];
-};
-app.get("/product",(req,res)=>{res.json(product())})
+// const product=()=>{
+//     return[
+//         { id: 1, name: "Laptop", price: 50000 },
+//     { id: 2, name: "Mobile", price: 20000 }
+//     ];
+// };
+// app.get("/product",(req,res)=>{res.json(product())})
