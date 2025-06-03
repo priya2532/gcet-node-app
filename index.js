@@ -7,7 +7,7 @@ app.listen(8080,()=>{
 });
 app.use(cors())
 app.get("/",(req,res)=>{
-    return res.send("Hello World");
+    return res.send("Good Morning");
 });
 app.get("/greet",(req,res)=>{res.send("Greetings")})
 app.get("/name",(req,res)=>{res.send("Sri Priya")})
