@@ -1,8 +1,9 @@
 import express from 'express'
 import cors from 'cors'
-
+import mongoose from 'mongoose';
 const app=express()
 app.listen(8080,()=>{
+    mongoose.connect("mongodb:")
     console.log("Server Started");
 });
 app.use(cors());
