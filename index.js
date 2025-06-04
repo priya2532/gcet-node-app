@@ -1,7 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-
+import dotenv from "dotenv";
+dotenv.config();
 import userRouter from "./routes/userRoutes.js";
 import productRouter from "./routes/productRoutes.js";
 
@@ -12,9 +13,10 @@ app.use(express.json());
 app.use("/users", userRouter);
 
 app.use("/products", productRouter);
+const MONGODB_URI=process.env.MONGODB_URI
 
 app.listen(8080, () => {
-  mongoose.connect("mongodb://localhost:27017/gcet");
+  mongoose.connect(`${MONGODB_URI}`);
   console.log("Server Started");
 });
 // app.get("/",(req,res)=>{
