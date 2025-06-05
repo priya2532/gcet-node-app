@@ -34,10 +34,10 @@ mongoose.connect(MONGODB_URI)
 
 
 
-// app.get("/",(req,res)=>{
-//     return res.send("Good Morning");
-// });
-// app.post("/register",async(req,res)=>{
+ //app.get("/",(req,res)=>{
+   //  return res.send("Good Morning");
+ //});
+ //app.post("/register",async(req,res)=>{
 //     const {name,email,pass}=req.body
 //     const result=await productModel.insertOne({name:name,email:email,pass:pass});
 //     return res.json(result);
@@ -51,10 +51,10 @@ mongoose.connect(MONGODB_URI)
 //     return res.json("Invalid");
 //         }
 // });
-// app.get("/products",async(req,res)=>{
-//     const products=await product.find();
-//     res.json(products);
-// })
+ //app.get("/products",async(req,res)=>{
+   //  const products=await product.find();
+     //res.json(products);
+ //})
 
 //app.get("/greet",(req,res)=>{res.send("Greetings")})
 //app.get("/name",(req,res)=>{res.send("Sri Priya")})
